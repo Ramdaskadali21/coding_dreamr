@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coding Dreamr</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .scrolled-nav {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .scrolled-nav img.logo {
+      width: 28px !important;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .dropdown-content {
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <header x-data="{ mobileMenu: false }" x-init="
+      window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        navbar.classList.toggle('scrolled-nav', window.scrollY > 10);
+      })
+    " id="navbar" class="sticky top-0 z-50 bg-white transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center transition-all duration-300">
+      <div class="flex items-center gap-2">
+        <img src="https://img.icons8.com/color/48/code.png" class="w-8 logo transition-all duration-300" />
+        <h1 class="text-xl font-bold text-blue-600">CodingDreamr</h1>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 font-medium">
+        <a href="#" class="hover:text-blue-600 transition">Home</a>
+        <div x-data="{ show: false }" class="relative">
+          <button @mouseenter="show = true" @mouseleave="show = false" class="flex items-center gap-1 hover:text-blue-600 transition">
+            Blog <i class="fas fa-caret-down"></i>
+          </button>
+          <div @mouseenter="show = true" @mouseleave="show = false"
+            x-show="show" x-transition class="absolute bg-white border mt-2 w-48 shadow-lg rounded-md p-2 dropdown-content z-50">
+            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Login Forms</a>
+            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Website Designs</a>
+            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Navigation Bars</a>
+            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Sidebar Menu</a>
+            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Card Designs</a>
+          </div>
+        </div>
+        <a href="#" class="hover:text-blue-600 transition">HTML & CSS</a>
+        <a href="#" class="hover:text-blue-600 transition">JavaScript</a>
+        <a href="#" class="hover:text-blue-600 transition">React JS</a>
+        <a href="#" class="hover:text-blue-600 transition">Contact</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden flex items-center gap-3">
+        <i class="fas fa-search text-xl text-gray-600"></i>
+        <button @click="mobileMenu = !mobileMenu">
+          <i class="fas fa-bars text-2xl text-gray-700"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenu" class="md:hidden bg-white border-t px-6 pb-4">
+      <a href="#" class="block py-2 border-b">Home</a>
+      <a href="#" class="block py-2 border-b">Blog</a>
+      <a href="#" class="block py-2 border-b">HTML & CSS</a>
+      <a href="#" class="block py-2 border-b">JavaScript</a>
+      <a href="#" class="block py-2 border-b">React JS</a>
+      <a href="#" class="block py-2">Contact</a>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <div class="max-w-5xl mx-auto mt-6 px-4">
+    <div class="flex items-center gap-2 bg-white border p-3 rounded-lg shadow-sm">
+      <i class="fas fa-search text-gray-400 text-lg ml-2"></i>
+      <input type="text" placeholder="Search..." class="flex-1 outline-none px-2 text-sm"/>
+      <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 text-sm">Search</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
+    
+    <!-- Posts -->
+    <div class="lg:col-span-3 grid sm:grid-cols-2 gap-6">
+      <div class="bg-white rounded shadow card overflow-hidden transition-transform duration-200">
+        <img src="https://via.placeholder.com/600x300/2563eb/ffffff?text=Sidebar+Dropdown" alt="Sidebar post" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Create Sidebar with Dropdown Menu</h2>
+          <p class="text-sm text-gray-500 mt-2">January 20, 2025</p>
+        </div>
+      </div>
+      <div class="bg-white rounded shadow card overflow-hidden transition-transform duration-200">
+        <img src="https://via.placeholder.com/600x300/4f46e5/ffffff?text=Responsive+Sidebar" alt="Sidebar Menu" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Create A Sidebar Menu</h2>
+          <p class="text-sm text-gray-500 mt-2">November 7, 2024</p>
+        </div>
+      </div>
+      <div class="bg-white rounded shadow card sm:col-span-2 overflow-hidden">
+        <img src="https://via.placeholder.com/1200x400/1e40af/ffffff?text=Login+Form+Design" alt="Login Form" class="w-full h-56 object-cover">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Beautiful Login Form in HTML & CSS</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="bg-white rounded shadow p-4">
+      <h3 class="font-bold mb-3 border-b pb-2 text-lg text-gray-700">Recent Posts</h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <p class="font-medium hover:text-blue-600 transition">Responsive Card Slider in SwiperJS</p>
+          <p class="text-gray-500">April 5, 2025</p>
+        </li>
+        <li>
+          <p class="font-medium hover:text-blue-600 transition">✨ AI Image Generator in HTML CSS</p>
+          <p class="text-gray-500">March 19, 2025</p>
+        </li>
+        <li>
+          <p class="font-medium hover:text-blue-600 transition">Google Gemini Chatbot</p>
+          <p class="text-gray-500">Feb 12, 2025</p>
+        </li>
+        <li>
+          <p class="font-medium hover:text-blue-600 transition">Streamlining Dev Collaboration</p>
+          <p class="text-gray-500">Jan 28, 2025</p>
+        </li>
+      </ul>
+    </aside>
+  </div>
+
+  <!-- Floating Button -->
+  <div class="fixed bottom-5 right-5">
+    <button class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-full shadow-lg text-xl">
+      ☕
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-16 border-t text-sm text-gray-600">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>&copy; 2025 Coding Dreamr. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-blue-600">Privacy</a>
+        <a href="#" class="hover:text-blue-600">Terms</a>
+        <a href="#" class="hover:text-blue-600">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
