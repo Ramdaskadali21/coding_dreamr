@@ -3,172 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coding Dreamr</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/alpinejs" defer></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Govt Jobs 2025</title>
   <style>
+    :root {
+      --primary: #004b87;
+      --accent: #0077cc;
+      --white: #ffffff;
+      --light-bg: #f9f9f9;
+      --dark-text: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
     }
-    .scrolled-nav {
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
+
+    nav {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-    .scrolled-nav img.logo {
-      width: 28px !important;
+
+    nav h1 {
+      font-size: 1.4rem;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+
+    section {
+      padding: 20px;
+      background-color: var(--white);
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     }
-    .dropdown-content {
-      animation: fadeIn 0.3s ease;
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 14px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+      color: var(--primary);
+    }
+
+    td {
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    /* Hide table and use cards for small screens */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: none;
+      }
+
+      .job-card {
+        background-color: #fff;
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        padding: 16px;
+        border-left: 5px solid var(--primary);
+      }
+
+      .job-card h3 {
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+
+      .job-card p {
+        margin: 4px 0;
+        font-weight: bold;
+      }
+
+      .job-card a {
+        margin-top: 8px;
+        display: inline-block;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .job-card a:hover {
+        text-decoration: underline;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-  <!-- Navbar -->
-  <header x-data="{ mobileMenu: false }" x-init="
-      window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        navbar.classList.toggle('scrolled-nav', window.scrollY > 10);
-      })
-    " id="navbar" class="sticky top-0 z-50 bg-white transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center transition-all duration-300">
-      <div class="flex items-center gap-2">
-        <img src="https://img.icons8.com/color/48/code.png" class="w-8 logo transition-all duration-300" />
-        <h1 class="text-xl font-bold text-blue-600">CodingDreamr</h1>
-      </div>
+  <nav>
+    <h1>Job Updates 2025</h1>
+  </nav>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6 font-medium">
-        <a href="#" class="hover:text-blue-600 transition">Home</a>
-        <div x-data="{ show: false }" class="relative">
-          <button @mouseenter="show = true" @mouseleave="show = false" class="flex items-center gap-1 hover:text-blue-600 transition">
-            Blog <i class="fas fa-caret-down"></i>
-          </button>
-          <div @mouseenter="show = true" @mouseleave="show = false"
-            x-show="show" x-transition class="absolute bg-white border mt-2 w-48 shadow-lg rounded-md p-2 dropdown-content z-50">
-            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Login Forms</a>
-            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Website Designs</a>
-            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Navigation Bars</a>
-            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Sidebar Menu</a>
-            <a href="#" class="block px-3 py-2 hover:bg-gray-100 rounded">Card Designs</a>
-          </div>
-        </div>
-        <a href="#" class="hover:text-blue-600 transition">HTML & CSS</a>
-        <a href="#" class="hover:text-blue-600 transition">JavaScript</a>
-        <a href="#" class="hover:text-blue-600 transition">React JS</a>
-        <a href="#" class="hover:text-blue-600 transition">Contact</a>
-      </nav>
+  <section>
+    <h2>🧾 Jobs</h2>
 
-      <!-- Mobile Hamburger -->
-      <div class="md:hidden flex items-center gap-3">
-        <i class="fas fa-search text-xl text-gray-600"></i>
-        <button @click="mobileMenu = !mobileMenu">
-          <i class="fas fa-bars text-2xl text-gray-700"></i>
-        </button>
-      </div>
+    <!-- Desktop Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Post Name</th>
+          <th>Total Post</th>
+          <th>Qualification</th>
+          <th>Last Date</th>
+          <th>Apply</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Junior Assistant Manager</td>
+          <td>676</td>
+          <td>Any Graduate (60% / 55%)</td>
+          <td>20/05/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>SSC CHSL 2025</td>
+          <td>5000+</td>
+          <td>12th Pass</td>
+          <td>07/06/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>RRB ALP</td>
+          <td>5696</td>
+          <td>10th + ITI / Diploma</td>
+          <td>19/05/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>BMC Sub Engineer</td>
+          <td>339</td>
+          <td>Diploma / Degree in Engg.</td>
+          <td>27/05/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>SBI Clerk</td>
+          <td>8773</td>
+          <td>Any Graduate</td>
+          <td>21/06/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>Indian Navy Agniveer SSR</td>
+          <td>1400</td>
+          <td>12th with Physics & Math</td>
+          <td>05/06/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>UPSC NDA II</td>
+          <td>400+</td>
+          <td>12th Pass</td>
+          <td>04/06/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>DRDO Apprentice</td>
+          <td>150</td>
+          <td>Diploma / ITI</td>
+          <td>28/05/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>Forest Guard</td>
+          <td>2138</td>
+          <td>12th Pass</td>
+          <td>10/06/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+        <tr>
+          <td>ESIC Nursing Officer</td>
+          <td>1930</td>
+          <td>B.Sc Nursing / GNM</td>
+          <td>27/05/2025</td>
+          <td><a href="#">Apply</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile Cards -->
+    <div class="job-card">
+      <h3>Junior Assistant Manager</h3>
+      <p>Total Post: 676</p>
+      <p>Qualification: Any Graduate (60% / 55%)</p>
+      <p>Last Date: 20/05/2025</p>
+      <a href="#">Apply</a>
     </div>
 
-    <!-- Mobile Menu -->
-    <div x-show="mobileMenu" class="md:hidden bg-white border-t px-6 pb-4">
-      <a href="#" class="block py-2 border-b">Home</a>
-      <a href="#" class="block py-2 border-b">Blog</a>
-      <a href="#" class="block py-2 border-b">HTML & CSS</a>
-      <a href="#" class="block py-2 border-b">JavaScript</a>
-      <a href="#" class="block py-2 border-b">React JS</a>
-      <a href="#" class="block py-2">Contact</a>
-    </div>
-  </header>
-
-  <!-- Search -->
-  <div class="max-w-5xl mx-auto mt-6 px-4">
-    <div class="flex items-center gap-2 bg-white border p-3 rounded-lg shadow-sm">
-      <i class="fas fa-search text-gray-400 text-lg ml-2"></i>
-      <input type="text" placeholder="Search..." class="flex-1 outline-none px-2 text-sm"/>
-      <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 text-sm">Search</button>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
-    
-    <!-- Posts -->
-    <div class="lg:col-span-3 grid sm:grid-cols-2 gap-6">
-      <div class="bg-white rounded shadow card overflow-hidden transition-transform duration-200">
-        <img src="https://via.placeholder.com/600x300/2563eb/ffffff?text=Sidebar+Dropdown" alt="Sidebar post" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Create Sidebar with Dropdown Menu</h2>
-          <p class="text-sm text-gray-500 mt-2">January 20, 2025</p>
-        </div>
-      </div>
-      <div class="bg-white rounded shadow card overflow-hidden transition-transform duration-200">
-        <img src="https://via.placeholder.com/600x300/4f46e5/ffffff?text=Responsive+Sidebar" alt="Sidebar Menu" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Create A Sidebar Menu</h2>
-          <p class="text-sm text-gray-500 mt-2">November 7, 2024</p>
-        </div>
-      </div>
-      <div class="bg-white rounded shadow card sm:col-span-2 overflow-hidden">
-        <img src="https://via.placeholder.com/1200x400/1e40af/ffffff?text=Login+Form+Design" alt="Login Form" class="w-full h-56 object-cover">
-        <div class="p-4">
-          <h2 class="text-lg font-semibold hover:text-blue-600 transition">Beautiful Login Form in HTML & CSS</h2>
-        </div>
-      </div>
+    <div class="job-card">
+      <h3>SSC CHSL 2025</h3>
+      <p>Total Post: 5000+</p>
+      <p>Qualification: 12th Pass</p>
+      <p>Last Date: 07/06/2025</p>
+      <a href="#">Apply</a>
     </div>
 
-    <!-- Sidebar -->
-    <aside class="bg-white rounded shadow p-4">
-      <h3 class="font-bold mb-3 border-b pb-2 text-lg text-gray-700">Recent Posts</h3>
-      <ul class="space-y-4 text-sm">
-        <li>
-          <p class="font-medium hover:text-blue-600 transition">Responsive Card Slider in SwiperJS</p>
-          <p class="text-gray-500">April 5, 2025</p>
-        </li>
-        <li>
-          <p class="font-medium hover:text-blue-600 transition">✨ AI Image Generator in HTML CSS</p>
-          <p class="text-gray-500">March 19, 2025</p>
-        </li>
-        <li>
-          <p class="font-medium hover:text-blue-600 transition">Google Gemini Chatbot</p>
-          <p class="text-gray-500">Feb 12, 2025</p>
-        </li>
-        <li>
-          <p class="font-medium hover:text-blue-600 transition">Streamlining Dev Collaboration</p>
-          <p class="text-gray-500">Jan 28, 2025</p>
-        </li>
-      </ul>
-    </aside>
-  </div>
-
-  <!-- Floating Button -->
-  <div class="fixed bottom-5 right-5">
-    <button class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-full shadow-lg text-xl">
-      ☕
-    </button>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-white mt-16 border-t text-sm text-gray-600">
-    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p>&copy; 2025 Coding Dreamr. All rights reserved.</p>
-      <div class="flex gap-4">
-        <a href="#" class="hover:text-blue-600">Privacy</a>
-        <a href="#" class="hover:text-blue-600">Terms</a>
-        <a href="#" class="hover:text-blue-600">Support</a>
-      </div>
+    <div class="job-card">
+      <h3>RRB ALP</h3>
+      <p>Total Post: 5696</p>
+      <p>Qualification: 10th + ITI / Diploma</p>
+      <p>Last Date: 19/05/2025</p>
+      <a href="#">Apply</a>
     </div>
+
+    <div class="job-card">
+      <h3>BMC Sub Engineer</h3>
+      <p>Total Post: 339</p>
+      <p>Qualification: Diploma / Degree in Engg.</p>
+      <p>Last Date: 27/05/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>SBI Clerk</h3>
+      <p>Total Post: 8773</p>
+      <p>Qualification: Any Graduate</p>
+      <p>Last Date: 21/06/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>Indian Navy Agniveer SSR</h3>
+      <p>Total Post: 1400</p>
+      <p>Qualification: 12th with Physics & Math</p>
+      <p>Last Date: 05/06/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>UPSC NDA II</h3>
+      <p>Total Post: 400+</p>
+      <p>Qualification: 12th Pass</p>
+      <p>Last Date: 04/06/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>DRDO Apprentice</h3>
+      <p>Total Post: 150</p>
+      <p>Qualification: Diploma / ITI</p>
+      <p>Last Date: 28/05/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>Forest Guard</h3>
+      <p>Total Post: 2138</p>
+      <p>Qualification: 12th Pass</p>
+      <p>Last Date: 10/06/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+    <div class="job-card">
+      <h3>ESIC Nursing Officer</h3>
+      <p>Total Post: 1930</p>
+      <p>Qualification: B.Sc Nursing / GNM</p>
+      <p>Last Date: 27/05/2025</p>
+      <a href="#">Apply</a>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sarkari Result | All Rights Reserved</p>
   </footer>
 
 </body>
