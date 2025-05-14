@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Govt Jobs 2025</title>
+  <title>Responsive Govt Job List</title>
   <style>
     :root {
       --primary: #004b87;
-      --accent: #0077cc;
+      --accent: #ff6f61;
       --white: #ffffff;
       --light-bg: #f9f9f9;
       --dark-text: #222;
@@ -32,7 +32,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
     }
 
     nav h1 {
@@ -56,12 +55,11 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
     }
 
     th, td {
       border: 1px solid #ccc;
-      padding: 14px;
+      padding: 12px;
       text-align: left;
     }
 
@@ -74,15 +72,6 @@
       font-weight: bold;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       background-color: var(--primary);
       color: var(--white);
@@ -91,42 +80,65 @@
       margin-top: 40px;
     }
 
-    /* Hide table and use cards for small screens */
+    /* Hide mobile cards on large screens */
+    .job-card {
+      display: none;
+    }
+
+    /* Show table only on large screens */
+    @media (min-width: 769px) {
+      .desktop-table {
+        display: block;
+      }
+      .job-card {
+        display: none;
+      }
+    }
+
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
+      table.desktop-table {
         display: none;
       }
 
       .job-card {
-        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--white);
         margin: 15px 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         padding: 16px;
         border-left: 5px solid var(--primary);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border-radius: 10px;
       }
 
-      .job-card h3 {
+      .job-title {
+        font-size: 1.2rem;
+        font-weight: bold;
         color: var(--primary);
-        font-size: 1.1rem;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
-      .job-card p {
+      .job-field {
         margin: 4px 0;
         font-weight: bold;
       }
 
-      .job-card a {
-        margin-top: 8px;
-        display: inline-block;
-        color: var(--accent);
-        text-decoration: none;
+      .apply-btn {
+        background-color: var(--accent);
+        color: var(--white);
+        text-align: center;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 12px;
         font-weight: bold;
+        text-decoration: none;
+        width: fit-content;
+        align-self: center;
       }
 
-      .job-card a:hover {
-        text-decoration: underline;
+      .apply-btn:hover {
+        background-color: #e75747;
       }
     }
   </style>
@@ -141,7 +153,7 @@
     <h2>🧾 Jobs</h2>
 
     <!-- Desktop Table -->
-    <table>
+    <table class="desktop-table">
       <thead>
         <tr>
           <th>Post Name</th>
@@ -173,137 +185,32 @@
           <td>19/05/2025</td>
           <td><a href="#">Apply</a></td>
         </tr>
-        <tr>
-          <td>BMC Sub Engineer</td>
-          <td>339</td>
-          <td>Diploma / Degree in Engg.</td>
-          <td>27/05/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>SBI Clerk</td>
-          <td>8773</td>
-          <td>Any Graduate</td>
-          <td>21/06/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>Indian Navy Agniveer SSR</td>
-          <td>1400</td>
-          <td>12th with Physics & Math</td>
-          <td>05/06/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>UPSC NDA II</td>
-          <td>400+</td>
-          <td>12th Pass</td>
-          <td>04/06/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>DRDO Apprentice</td>
-          <td>150</td>
-          <td>Diploma / ITI</td>
-          <td>28/05/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>Forest Guard</td>
-          <td>2138</td>
-          <td>12th Pass</td>
-          <td>10/06/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>ESIC Nursing Officer</td>
-          <td>1930</td>
-          <td>B.Sc Nursing / GNM</td>
-          <td>27/05/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
       </tbody>
     </table>
 
     <!-- Mobile Cards -->
     <div class="job-card">
-      <h3>Junior Assistant Manager</h3>
-      <p>Total Post: 676</p>
-      <p>Qualification: Any Graduate (60% / 55%)</p>
-      <p>Last Date: 20/05/2025</p>
-      <a href="#">Apply</a>
+      <div class="job-title">Junior Assistant Manager</div>
+      <div class="job-field">Total Post: 676</div>
+      <div class="job-field">Qualification: Any Graduate (60% / 55%)</div>
+      <div class="job-field">Last Date: 20/05/2025</div>
+      <a href="#" class="apply-btn">Apply</a>
     </div>
 
     <div class="job-card">
-      <h3>SSC CHSL 2025</h3>
-      <p>Total Post: 5000+</p>
-      <p>Qualification: 12th Pass</p>
-      <p>Last Date: 07/06/2025</p>
-      <a href="#">Apply</a>
+      <div class="job-title">SSC CHSL 2025</div>
+      <div class="job-field">Total Post: 5000+</div>
+      <div class="job-field">Qualification: 12th Pass</div>
+      <div class="job-field">Last Date: 07/06/2025</div>
+      <a href="#" class="apply-btn">Apply</a>
     </div>
 
     <div class="job-card">
-      <h3>RRB ALP</h3>
-      <p>Total Post: 5696</p>
-      <p>Qualification: 10th + ITI / Diploma</p>
-      <p>Last Date: 19/05/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>BMC Sub Engineer</h3>
-      <p>Total Post: 339</p>
-      <p>Qualification: Diploma / Degree in Engg.</p>
-      <p>Last Date: 27/05/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>SBI Clerk</h3>
-      <p>Total Post: 8773</p>
-      <p>Qualification: Any Graduate</p>
-      <p>Last Date: 21/06/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>Indian Navy Agniveer SSR</h3>
-      <p>Total Post: 1400</p>
-      <p>Qualification: 12th with Physics & Math</p>
-      <p>Last Date: 05/06/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>UPSC NDA II</h3>
-      <p>Total Post: 400+</p>
-      <p>Qualification: 12th Pass</p>
-      <p>Last Date: 04/06/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>DRDO Apprentice</h3>
-      <p>Total Post: 150</p>
-      <p>Qualification: Diploma / ITI</p>
-      <p>Last Date: 28/05/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>Forest Guard</h3>
-      <p>Total Post: 2138</p>
-      <p>Qualification: 12th Pass</p>
-      <p>Last Date: 10/06/2025</p>
-      <a href="#">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <h3>ESIC Nursing Officer</h3>
-      <p>Total Post: 1930</p>
-      <p>Qualification: B.Sc Nursing / GNM</p>
-      <p>Last Date: 27/05/2025</p>
-      <a href="#">Apply</a>
+      <div class="job-title">RRB ALP</div>
+      <div class="job-field">Total Post: 5696</div>
+      <div class="job-field">Qualification: 10th + ITI / Diploma</div>
+      <div class="job-field">Last Date: 19/05/2025</div>
+      <a href="#" class="apply-btn">Apply</a>
     </div>
 
   </section>
