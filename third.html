@@ -1,223 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Govt Job List</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Listings</title>
   <style>
     :root {
       --primary: #004b87;
-      --accent: #ff6f61;
-      --white: #ffffff;
-      --light-bg: #f9f9f9;
-      --dark-text: #222;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      --accent: #ff5722;
+      --white: #fff;
+      --light-bg: #f1f5f9;
+      --dark: #333;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--dark-text);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--light-bg);
+      color: var(--dark);
+    }
+
+    header, footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1em;
+      text-align: center;
     }
 
     nav {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 16px 24px;
+      background: var(--white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 0.5em 1em;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
-    nav h1 {
-      font-size: 1.4rem;
+    .filters button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.5em 1em;
+      margin: 0.5em;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    section {
-      padding: 20px;
-      background-color: var(--white);
-      margin: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-    }
-
-    table {
+    .job-table {
+      display: table;
       width: 100%;
-      border-collapse: collapse;
+      margin-top: 1em;
     }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
+    .job-table thead {
+      background: #ddd;
+    }
+
+    .job-table th, .job-table td {
+      padding: 0.75em;
       text-align: left;
-    }
-
-    th {
-      background-color: #eee;
-      color: var(--primary);
-    }
-
-    td {
+      border-bottom: 1px solid #ccc;
       font-weight: bold;
     }
 
-    footer {
-      background-color: var(--primary);
-      color: var(--white);
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    /* Hide mobile cards on large screens */
-    .job-card {
+    .mobile-job-card {
       display: none;
+      flex-direction: column;
+      background: var(--white);
+      margin: 1em;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      padding: 1em;
     }
 
-    /* Show table only on large screens */
-    @media (min-width: 769px) {
-      .desktop-table {
-        display: block;
-      }
-      .job-card {
-        display: none;
-      }
+    .mobile-job-card div {
+      margin: 0.25em 0;
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      table.desktop-table {
+    .mobile-job-card button {
+      margin: 1em auto 0 auto;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    @media screen and (max-width: 768px) {
+      .job-table {
         display: none;
       }
-
-      .job-card {
+      .mobile-job-card {
         display: flex;
-        flex-direction: column;
-        background-color: var(--white);
-        margin: 15px 0;
-        padding: 16px;
-        border-left: 5px solid var(--primary);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        border-radius: 10px;
-      }
-
-      .job-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: var(--primary);
-        margin-bottom: 10px;
-      }
-
-      .job-field {
-        margin: 4px 0;
-        font-weight: bold;
-      }
-
-      .apply-btn {
-        background-color: var(--accent);
-        color: var(--white);
-        text-align: center;
-        padding: 10px;
-        border-radius: 6px;
-        margin-top: 12px;
-        font-weight: bold;
-        text-decoration: none;
-        width: fit-content;
-        align-self: center;
-      }
-
-      .apply-btn:hover {
-        background-color: #e75747;
       }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Latest Government Jobs</h1>
+  </header>
 
   <nav>
-    <h1>Job Updates 2025</h1>
+    <h2>Job Listings</h2>
+    <div class="filters">
+      <button onclick="sortByDate()">Sort by Last Date</button>
+      <button onclick="sortByLatest()">Sort by Newest</button>
+    </div>
   </nav>
 
-  <section>
-    <h2>🧾 Jobs</h2>
-
-    <!-- Desktop Table -->
-    <table class="desktop-table">
-      <thead>
-        <tr>
-          <th>Post Name</th>
-          <th>Total Post</th>
-          <th>Qualification</th>
-          <th>Last Date</th>
-          <th>Apply</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Junior Assistant Manager</td>
-          <td>676</td>
-          <td>Any Graduate (60% / 55%)</td>
-          <td>20/05/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>SSC CHSL 2025</td>
-          <td>5000+</td>
-          <td>12th Pass</td>
-          <td>07/06/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-        <tr>
-          <td>RRB ALP</td>
-          <td>5696</td>
-          <td>10th + ITI / Diploma</td>
-          <td>19/05/2025</td>
-          <td><a href="#">Apply</a></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Mobile Cards -->
-    <div class="job-card">
-      <div class="job-title">Junior Assistant Manager</div>
-      <div class="job-field">Total Post: 676</div>
-      <div class="job-field">Qualification: Any Graduate (60% / 55%)</div>
-      <div class="job-field">Last Date: 20/05/2025</div>
-      <a href="#" class="apply-btn">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <div class="job-title">SSC CHSL 2025</div>
-      <div class="job-field">Total Post: 5000+</div>
-      <div class="job-field">Qualification: 12th Pass</div>
-      <div class="job-field">Last Date: 07/06/2025</div>
-      <a href="#" class="apply-btn">Apply</a>
-    </div>
-
-    <div class="job-card">
-      <div class="job-title">RRB ALP</div>
-      <div class="job-field">Total Post: 5696</div>
-      <div class="job-field">Qualification: 10th + ITI / Diploma</div>
-      <div class="job-field">Last Date: 19/05/2025</div>
-      <a href="#" class="apply-btn">Apply</a>
-    </div>
-
-  </section>
+  <section id="jobs"></section>
 
   <footer>
-    <p>&copy; 2025 Sarkari Result | All Rights Reserved</p>
+    <p>&copy; 2025 Sarkari Result | Job Blog Website</p>
   </footer>
 
+  <script>
+    const jobs = [
+      {
+        title: "RRB ALP",
+        totalPost: "5696",
+        qualification: "10th + ITI / Diploma",
+        lastDate: "2025-05-19",
+        applyLink: "#"
+      },
+      {
+        title: "Junior Assistant Manager",
+        totalPost: "676",
+        qualification: "Any Graduate (60% / 55%)",
+        lastDate: "2025-05-20",
+        applyLink: "#"
+      },
+      {
+        title: "SSC CHSL 2025",
+        totalPost: "5000+",
+        qualification: "12th Pass",
+        lastDate: "2025-06-07",
+        applyLink: "#"
+      }
+    ];
+
+    const jobsContainer = document.getElementById('jobs');
+
+    function renderJobs(list) {
+      const today = new Date();
+      const tableView = `
+        <table class="job-table">
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Total Post</th>
+              <th>Qualification</th>
+              <th>Last Date</th>
+              <th>Apply</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(job => `
+              <tr>
+                <td>${job.title}</td>
+                <td>${job.totalPost}</td>
+                <td>${job.qualification}</td>
+                <td>${job.lastDate}</td>
+                <td><a href="${job.applyLink}" style="color: var(--accent)">Apply</a></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      `;
+
+      const mobileView = list.map(job => `
+        <div class="mobile-job-card">
+          <div><strong>Job Title:</strong> ${job.title}</div>
+          <div><strong>Total Posts:</strong> ${job.totalPost}</div>
+          <div><strong>Qualification:</strong> ${job.qualification}</div>
+          <div><strong>Last Date:</strong> ${job.lastDate}</div>
+          <button onclick="window.open('${job.applyLink}', '_blank')">Apply Now</button>
+        </div>
+      `).join('');
+
+      jobsContainer.innerHTML = tableView + mobileView;
+    }
+
+    function sortByDate() {
+      const sorted = [...jobs].sort((a, b) => new Date(a.lastDate) - new Date(b.lastDate));
+      renderJobs(sorted);
+    }
+
+    function sortByLatest() {
+      renderJobs([...jobs].reverse());
+    }
+
+    // Initial Render sorted by latest
+    sortByLatest();
+  </script>
 </body>
 </html>
